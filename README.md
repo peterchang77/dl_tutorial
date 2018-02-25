@@ -74,15 +74,17 @@ On the top set of links, click on `Add Storage` to configure the storage setting
 
 ![AWS Storage Selection](./screenshots/aws-ec2new04.png)
 
-On the top set of links, click on `Add Tags` to name your new EC2 instance (for your own personal benefit in case you may have multiple EC2 instances to keep track of). In the middle of the screen click the link for `click to add a Name tag` and complete with an apporpiate name:
+On the top set of links, click on `Add Tags` to name your new EC2 instance (for your own personal benefit in case you may have multiple EC2 instances to keep track of). In the middle of the screen click the link for `click to add a Name tag` and complete with an appropriate name:
 
 ![AWS Tags Selection](./screenshots/aws-ec2new05.png)
 
-On the top set of links, click on `Configure Security Group` to set up port firewall settings. First we will create an arbitrary name for this profile of settings by chaning `Security group name` and `Description` to `deep-learning`. By default port 22 (for SSH) is allowed. In addition we must open the default Jupyter notebook port 8888 to allow you to connect to the EC2 instance and edit code through a web browser. To do so, click `Add Rule` and fill in the following settings:
+On the top set of links, click on `Configure Security Group` to set up port firewall settings. First we will create an arbitrary name for this profile of settings by changing `Security group name` and `Description` to `deep-learning`. By default port 22 (for SSH) is allowed. In addition we must open the default Jupyter notebook port 8888 to allow you to connect to the EC2 instance and edit code through a web browser. To do so, click `Add Rule` and fill in the following settings:
 
 ![AWS Security Selection](./screenshots/aws-ec2new06.png)
 
 On the top set of links, click on `Review` to see a summary of the EC2 settings. Click on the bottom right hand `Launch` button to complete the set up process and spin up your new EC2 instance. 
+
+![AWS Launch](./screenshots/aws-ec2new07.png)
 
 # Accessing AWS Instance
 
