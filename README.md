@@ -86,9 +86,26 @@ On the top set of links, click on `Configure Security Group` to set up port fire
 
 ![AWS Security Selection](./screenshots/aws-ec2new06.png)
 
-On the top set of links, click on `Review` to see a summary of the EC2 settings. Click on the bottom right hand `Launch` button to complete the set up process and spin up your new EC2 instance. 
+On the top set of links, click on `Review` to see a summary of the EC2 settings. Click on the bottom right hand `Launch` button.
 
 ![AWS Launch](./screenshots/aws-ec2new07.png)
+
+The final step is to create an SSH key pair to remotely connect to your EC2 instance. To do so type in a key pair name (`default`) and click `Download Key Pair`. It is important to remember the location of the downloaded key. If you lose this key you will be unable to access the EC2 instance. A recommended strategy to store AWS key pairs is to place it in a hidden folder easily accessible from your home folder (`~/.aws`).
+
+![AWS Launch](./screenshots/aws-ec2new08.png)
+
+Before continuing, open a terminal and navigate to the location of your saved key. If you did not create a `~/.aws` folder to place your key and would like to do so now, use the following commands:
+```
+mkdir ~/.aws
+mv name_of_your_key.pem ~/.aws/default.pem
+```
+
+Note that some OS's may automatically append a `*.txt` to the end of your `*.pem` file when downloading. If so the `mv` command above wil rename your file appropriately. At this time, also go ahead and change the permissions on the SSH key to not be publically viewable (otherwise SSH client will not accept the key):
+```
+chmod 400 ~/.aws/default.pem
+```
+
+Returning back to the web browser, click `Launch Instance` to complete the EC2 creation proces.
 
 # Accessing AWS Instance
 
@@ -104,18 +121,15 @@ There are two options to start a remote connection to your EC2 instance. Instruc
 
 ![AWS Connect](./screenshots/aws-ssh00.png)
 
-The recommended option is to connect through a standalone SSH client (from your local machine). To do so, follow the instructions on the `Connect` screen. Note here that the `*.pem` file in the next steps references the SSH key you set up in the instructions for creating your EC2 instance above. If you chose to use the default settings of the tutorial above then the path to your `*.pem` file will be `~/.aws/default.pem`, otherwise replace this path with your local path based on the location you saved the file.
+The recommended option is to connect through a standalone SSH client (from your local machine). To do so, follow the instructions on the `Connect` screen. Note here that the following commands should be typed into a terminal application. For Mac OS X users the default Terminal application is found in Applications Folder > Utilities. In addition, keep in mind that the `*.pem` file in the next steps references the SSH key you set up in the instructions for creating your EC2 instance above. If you chose to use the default settings of the tutorial above then the path to your `*.pem` file will be `~/.aws/default.pem`, otherwise replace this path with your local path and name based on the location you saved the file.
 
 The first time you connect will need to adjust the permissions on the `*.pem` file SSH key. To do so, open up a terminal and type in the following command:
 ```
 chmod 400 /path/to/your/pem/file
 ```
 If you followed the default settings of the tutorial above, this would be:
-```
-chmod 400 ~/.aws/default.pem
-``` 
 
-To connect to the instance, use the SSH client of your choice. For Max OS X users, the default SSH client is recommended, and can be accessed by opening the Terminal (Applications > Utilities) and typing the following command:
+To connect to the instance, use the SSH client of your choice. For Max OS X users, the default SSH client is recommended and can be accessed by typing the following command:
 ```
 ssh -i "/path/to/your/pem/file" ubuntu@[ec2-public-dns]
 ``` 
