@@ -8,10 +8,31 @@ This repository contains the code examples and prerequisite materials for the ha
 
 # Create AWS Instance
 
-# Login to AWS Instance
+### Sign up for AWS account
+
+New users to Amazon AWS have access to a free tier of services for the initial 12 months of subscription. Note that the GPU EC2 instance required for deep learning is not part of the free tier of services ($0.90/hour) however an Amazon AWS account is still required. To sign up visit: https://portal.aws.amazon.com/billing/signup#/start 
+
+### Login to EC2 console (dashboard)
+
+### Create a new EC2 instance
+
+# Accessing AWS Instance
+
+### Launch EC2 instance 
+
+### SSH into EC2 instance
+
+### Stop EC2 instance 
 
 # Starting Jupyter Notebook 
 
-During the tutorial session, all code written by the participants will be completed using the Jupyter Notebook, an iPython kernel / server that will be running from your own personal AWS instance and accessed through a web-browser. Through this web-based interface one will be able to write, edit and run code in an accessible way without needing to use the Linux command line. For more advanced users, this entire Github repository is available for access from the command line at `~/dl_tutorial`. See below for more information.
+During the tutorial session, all code written by the participants will be completed using the Jupyter Notebook, an iPython kernel / server that will be running from your own personal AWS instance and accessed through a web-browser. Through this web-based interface one will be able to write, edit and run code in an easy way without needing to use the Linux command line. For more advanced users, this entire Github repository is available for access from the command line at `~/dl_tutorial`. See below for more information.
 
 # Advanced Users
+
+For more advanced users wishing to follow along directly through the EC2 command line instead of the Jupyter Notebook, these are instructions for basic access. In the EC2 instance, all required dependencies have been installed in a separate Conda virtual enivornment named `dl_aws`. To activate simply run:
+```
+source activate dw_aws
+```
+
+From here simply access code and materials from this cloned Github repository at `~/dl_tutorial`. You may use your favorite editor. Note that `vim` has been preconfigured with syntax highlighting, Vundle and several useful plugins for Python development (see `~/.vimrc` for further details). Code may be executed with either `python` or the `ipython` kernel.
