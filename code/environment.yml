@@ -1,53 +1,90 @@
 name: dl_aws
 channels:
-- conda-forge
-- defaults
+  - conda-forge
+  - defaults
 dependencies:
-- ipdb=0.10.1=py35_0
-- certifi=2016.2.28=py35_0
-- decorator=4.1.2=py35_0
-- ipython=5.0.0=py35_0
-- ipython_genutils=0.2.0=py35_0
-- libgfortran=3.0.0=1
-- mkl=2017.0.3=0
-- numpy=1.13.1=py35_0
-- openssl=1.0.2l=0
-- pandas=0.20.3=py35_0
-- path.py=10.3.1=py35_0
-- pexpect=4.2.1=py35_0
-- pickleshare=0.7.4=py35_0
-- pip=9.0.1=py35_1
-- prompt_toolkit=1.0.15=py35_0
-- ptyprocess=0.5.2=py35_0
-- pygments=2.2.0=py35_0
-- python=3.5.0=1
-- python-dateutil=2.6.1=py35_0
-- pytz=2017.2=py35_0
-- readline=6.2=2
-- scikit-learn=0.19.0=np113py35_0
-- scipy=0.19.1=np113py35_0
-- setuptools=36.4.0=py35_1
-- simplegeneric=0.8.1=py35_1
-- six=1.10.0=py35_0
-- sqlite=3.13.0=0
-- tk=8.5.18=0
-- traitlets=4.3.2=py35_0
-- wcwidth=0.1.7=py35_0
-- wheel=0.29.0=py35_0
-- xz=5.0.5=1
-- zlib=1.2.11=0
-- pip:
-  - absl-py==0.1.10
-  - bleach==1.5.0
-  - html5lib==0.9999999
-  - ipython-genutils==0.2.0
-  - keras==2.1.4
-  - markdown==2.6.11
-  - prompt-toolkit==1.0.15
-  - protobuf==3.5.1
-  - pyyaml==3.12
-  - tensorflow-gpu==1.5.0
-  - tensorflow-tensorboard==1.5.1
-  - werkzeug==0.14.1
+  - ipdb=0.10.1=py35_0
+  - bleach=2.1.2=py35_0
+  - ca-certificates=2017.08.26=h1d4fec5_0
+  - certifi=2018.1.18=py35_0
+  - decorator=4.1.2=py35_0
+  - entrypoints=0.2.3=py35h48174a2_2
+  - fontconfig=2.12.4=h88586e7_1
+  - freetype=2.8=hab7d2ae_1
+  - gmp=6.1.2=h6c8ec71_1
+  - html5lib=1.0.1=py35h2f9c1c0_0
+  - icu=58.2=h9c2bf20_1
+  - ipykernel=4.8.2=py35_0
+  - ipython=5.0.0=py35_0
+  - ipython_genutils=0.2.0=py35_0
+  - ipywidgets=7.1.2=py35_0
+  - jinja2=2.10=py35h480ab6d_0
+  - jsonschema=2.6.0=py35h4395190_0
+  - jupyter=1.0.0=py35_4
+  - jupyter_client=5.2.2=py35_0
+  - jupyter_console=5.2.0=py35h4044a63_1
+  - jupyter_core=4.4.0=py35ha89e94b_0
+  - libgcc-ng=7.2.0=h7cc24e2_2
+  - libgfortran=3.0.0=1
+  - libiconv=1.15=h63c8f33_5
+  - libpng=1.6.34=hb9fc6fc_0
+  - libsodium=1.0.15=hf101ebd_0
+  - libstdcxx-ng=7.2.0=h7a57d05_2
+  - libxml2=2.9.4=0
+  - markupsafe=1.0=py35h4f4fcf6_1
+  - mistune=0.8.3=py35_0
+  - mkl=2017.0.3=0
+  - nbconvert=5.3.1=py35hc5194e3_0
+  - nbformat=4.4.0=py35h12e6e07_0
+  - notebook=5.4.0=py35_0
+  - numpy=1.13.1=py35_0
+  - openssl=1.0.2n=hb7f436b_0
+  - pandas=0.20.3=py35_0
+  - pandoc=1.19.2.1=hea2e7c5_1
+  - pandocfilters=1.4.2=py35h1565a15_1
+  - path.py=10.3.1=py35_0
+  - pexpect=4.2.1=py35_0
+  - pickleshare=0.7.4=py35_0
+  - pip=9.0.1=py35_1
+  - prompt_toolkit=1.0.15=py35_0
+  - ptyprocess=0.5.2=py35_0
+  - pygments=2.2.0=py35_0
+  - pyqt=4.11.4=py35_4
+  - python=3.5.0=1
+  - python-dateutil=2.6.1=py35_0
+  - pytz=2017.2=py35_0
+  - pyzmq=16.0.3=py35ha889422_0
+  - qt=4.8.7=3
+  - qtconsole=4.3.1=py35h4626a06_0
+  - readline=6.2=2
+  - scikit-learn=0.19.0=np113py35_0
+  - scipy=0.19.1=np113py35_0
+  - send2trash=1.5.0=py35_0
+  - setuptools=36.4.0=py35_1
+  - simplegeneric=0.8.1=py35_1
+  - sip=4.18=py35_0
+  - six=1.10.0=py35_0
+  - sqlite=3.13.0=0
+  - terminado=0.8.1=py35_1
+  - testpath=0.3.1=py35had42eaf_0
+  - tk=8.5.18=0
+  - tornado=4.5.3=py35_0
+  - traitlets=4.3.2=py35_0
+  - wcwidth=0.1.7=py35_0
+  - webencodings=0.5.1=py35hb6cf162_1
+  - wheel=0.29.0=py35_0
+  - widgetsnbextension=3.1.4=py35_0
+  - xz=5.0.5=1
+  - zeromq=4.2.2=hbedb6e5_2
+  - zlib=1.2.11=0
+  - pip:
+    - absl-py==0.1.10
+    - keras==2.1.4
+    - markdown==2.6.11
+    - protobuf==3.5.1
+    - pyyaml==3.12
+    - tensorflow-gpu==1.5.0
+    - tensorflow-tensorboard==1.5.1
+    - werkzeug==0.14.1
 prefix: /home/ubuntu/miniconda3/envs/dl_aws
 
