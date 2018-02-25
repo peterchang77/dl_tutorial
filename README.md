@@ -32,13 +32,9 @@ Enter the email address of your AWS account here.
 
 Enter the password of your AWS account here.
 
-After logging in you will arrive at a launch page of various AWS services. We want to specifically manage EC2 instances. To navigate to the EC2 dashboard, click on the `Services` dropdown menu in the top left hand corner of the banner:
+After logging in you will arrive at a launch page of various AWS services. We want to specifically manage EC2 instances. To navigate to the EC2 dashboard, click on the `Services` dropdown menu in the top left hand corner of the banner. You should now have a screen that looks like this:
 
 ![AWS Services Toolbar](./screenshots/aws-login02.png)
-
-You should now have a screen that looks like this:
-
-![AWS Services Dropdown](./screenshots/aws-login03.png)
 
 Click on the `EC2` link under the first `Compute` header within the first column. You have now arrived at the EC2 console (dashboard). Here you can manage the servers in your AWS cloud, including creating, terminating, starting and stopping individual EC2 instances. For more general information about EC2 services and the console, see Amazon documentation here: https://aws.amazon.com/ec2/getting-started/ 
 
