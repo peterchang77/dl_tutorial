@@ -16,7 +16,7 @@ To sign up, begin by visiting: https://portal.aws.amazon.com/billing/signup#/sta
 
 ![AWS Sign-up Screen](./screenshots/aws-signup00.png)
 
-Note that your chosen `AWS account name` cannot contain spaces or non-alphanumeric characters (`{}[]()/\'"~,;:.<>`).Follow the prompts on the remaining screens. A valid credit card will be required.
+Note that your chosen `AWS account name` cannot contain spaces or non-alphanumeric characters (`{}[]()/\'"~,;:.<>`). Follow the prompts on the remaining screens. A valid credit card will be required.
 
 ### Login to EC2 console (dashboard)
 
