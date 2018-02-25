@@ -94,9 +94,43 @@ On the top set of links, click on `Review` to see a summary of the EC2 settings.
 
 ### Launch EC2 instance 
 
+Upon creating your EC2 instance with the instructions, the new EC2 instance will be automatically started. On each subsequent future session, you will have to start (e.g. boot) your EC2 instance before you can connect and use it. To do so, select the `Instances` link on the left hand toolbar, select the instance you want to boot (blue check box to the left of the instance name), select `Actions` > `Instance State` > `Start`. Your EC2 instance will be ready to connect in about 30-60 seconds.
+
+![AWS Start](./screenshots/aws-start00.png)
+
 ### SSH into EC2 instance
 
+There are two options to start a remote connection to your EC2 instance. Instructions can be found selecting a particular EC2 instance (blue check box to the left of the instance name) and clicking the `Connect` button. 
+
+![AWS Connect](./screenshots/aws-ssh00.png)
+
+The recommended option is to connect through a standalone SSH client (from your local machine). To do so, follow the instructions on the `Connect` screen. Note here that the `*.pem*` file in the next steps references the SSH key you set up in the instructions for creating your EC2 instance above. If you chose to use the default settings of the tutorial above then the path to your `*.pem` file will be `~/.aws/default.pem`, otherwise replace this path with your local path based on the location you saved the file.
+
+The first time you connect will need to adjust the permissions on the `*.pem` file SSH key. To do so, open up a terminal and type in the following command:
+```
+chmod 400 '/path/to/your/pem/file'
+```
+If you followed the default settings of the tutorial above, this would be:
+```
+chmod 400 '~/.aws/default.pem'
+``` 
+
+To connect to the instance, use the SSH client of your choice. For Max OS X users, the default SSH client is recommended, and can be accessed by opening the Terminal (Applications > Utilities) and typing the following command:
+```
+ssh -i "/path/to/your/pem/file" ubuntu@[ec2-public-dns]
+``` 
+Note the you should replace [ec2-public-dns] with your EC2 instances public DNS. In the above screenshot this would be `c2-35-160-231-250.us-west-2.compute.amazonaws.com`. Assuming that your SSH key is located at `~/.aws/default.pem` then the full command would be:
+```
+ssh -i "~/.aws/default.pem" ubuntu@c2-35-160-231-250.us-west-2.compute.amazonaws.com
+```
+
+You should now be successfully logged into your remote SSH session:
+
+![AWS Remote Session](./screenshots/ssh01.png)
+
 ### Stop EC2 instance 
+
+AWS charges a fixed cost per hour of EC2 instance usage, proprated to the second. To keep your charges low, it is advised to stop (e.g. turn off) your EC2 instance whenever your are finished. To do so, select the `Instances` link on the left hand toolbar, select the instance you want to boot, select `Actions` > `Instance State` > `Stop`.
 
 # Starting Jupyter Notebook 
 
