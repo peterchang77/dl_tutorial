@@ -6,6 +6,18 @@ This repository contains the code examples and prerequisite materials for the ha
 2. How to access the  AWS EC2 instance.  
 3. How to run Jupyter notebook.
 
+### Template AMI
+
+The template Amazon Machine Image (AMI) provided as part of this tutorial contains the following preinstalled dependencies:
+
+* Python 3.5
+* NVIDIA drivers v384
+* CUDA 9.0 toolbox
+* cudNN 7.0 libraries
+* Tensorflow 1.5
+* Keras 2.4
+* Utility packages: jupyter, pandas, scipy, scikit-learn 
+
 ### Important Note
 
 You should try to complete steps (1) and (2) above several days BEFORE the session as a new AWS user will by default to complete a separate request for GPU-enable instances (requires up to 24 hours for approval).
