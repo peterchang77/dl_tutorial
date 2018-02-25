@@ -22,7 +22,7 @@ Follow the prompts on the remaining screens. A valid credit card will be require
 
 ### Login to EC2 console (dashboard)
 
-Use the following link to log into your new AWS account: https://aws.amazon.com/marketplace/management/signin
+Use the following link to log into your new AWS account: https://console.aws.amazon.com/console/home
 
 ### Create a new EC2 instance
 
