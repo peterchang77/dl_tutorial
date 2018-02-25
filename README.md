@@ -10,7 +10,11 @@ This repository contains the code examples and prerequisite materials for the ha
 
 ### Sign up for AWS account
 
-New users to Amazon AWS have access to a free tier of services for the initial 12 months of subscription. Note that the GPU EC2 instance required for deep learning is not part of the free tier of services ($0.90/hour) however an Amazon AWS account is still required. To sign up visit: https://portal.aws.amazon.com/billing/signup#/start 
+New users to Amazon AWS have access to a free tier of services for the initial 12 months of subscription. Note that the GPU EC2 instance required for deep learning is not part of the free tier of services ($0.90/hour) however an Amazon AWS account is still required. 
+
+To sign up, begin by visiting: https://portal.aws.amazon.com/billing/signup#/start 
+
+![AWS Sign-up Screen](./screenshots/aws-signup00.png)
 
 ### Login to EC2 console (dashboard)
 
