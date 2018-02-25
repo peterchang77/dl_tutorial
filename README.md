@@ -105,7 +105,7 @@ Note that some OS's may automatically append a `*.txt` to the end of your `*.pem
 chmod 400 ~/.aws/default.pem
 ```
 
-Returning back to the web browser, click `Launch Instance` to complete the EC2 creation proces.
+Returning back to the web browser, click `Launch Instance` to complete the EC2 creation process.
 
 # Accessing AWS Instance
 
@@ -121,19 +121,13 @@ There are two options to start a remote connection to your EC2 instance. Instruc
 
 ![AWS Connect](./screenshots/aws-ssh00.png)
 
-The recommended option is to connect through a standalone SSH client (from your local machine). To do so, follow the instructions on the `Connect` screen. Note here that the following commands should be typed into a terminal application. For Mac OS X users the default Terminal application is found in Applications Folder > Utilities. In addition, keep in mind that the `*.pem` file in the next steps references the SSH key you set up in the instructions for creating your EC2 instance above. If you chose to use the default settings of the tutorial above then the path to your `*.pem` file will be `~/.aws/default.pem`, otherwise replace this path with your local path and name based on the location you saved the file.
+The recommended option is to connect through a standalone SSH client (from your local machine). To do so, follow the instructions on the `Connect` screen.  
 
-The first time you connect will need to adjust the permissions on the `*.pem` file SSH key. To do so, open up a terminal and type in the following command:
-```
-chmod 400 /path/to/your/pem/file
-```
-If you followed the default settings of the tutorial above, this would be:
-
-To connect to the instance, use the SSH client of your choice. For Max OS X users, the default SSH client is recommended and can be accessed by typing the following command:
+To connect to the instance, use the SSH client of your choice. For Max OS X users, the default SSH client located in the Terminal appliation (Applications > Utilities) is recommended and can be accessed by typing the following command:
 ```
 ssh -i "/path/to/your/pem/file" ubuntu@[ec2-public-dns]
 ``` 
-Note the you should replace [ec2-public-dns] with your EC2 instances public DNS. In the above screenshot this would be `c2-35-160-231-250.us-west-2.compute.amazonaws.com`. Assuming that your SSH key is located at `~/.aws/default.pem` then the full command would be:
+Note the you should replace [ec2-public-dns] with your EC2 instances public DNS. In the above screenshot this would be `c2-35-160-231-250.us-west-2.compute.amazonaws.com`. Assuming that your SSH key is located at `~/.aws/default.pem` (if you followed the instructions per EC2 creation aboe) then the full command would be:
 ```
 ssh -i "~/.aws/default.pem" ubuntu@c2-35-160-231-250.us-west-2.compute.amazonaws.com
 ```
