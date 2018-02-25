@@ -100,19 +100,19 @@ Upon creating your EC2 instance with the instructions, the new EC2 instance will
 
 ### SSH into EC2 instance
 
-There are two options to start a remote connection to your EC2 instance. Instructions can be found selecting a particular EC2 instance (blue check box to the left of the instance name) and clicking the `Connect` button. 
+There are two options to start a remote connection to your EC2 instance. Instructions can be found by selecting a particular EC2 instance (blue check box to the left of the instance name) and clicking the `Connect` button. 
 
 ![AWS Connect](./screenshots/aws-ssh00.png)
 
-The recommended option is to connect through a standalone SSH client (from your local machine). To do so, follow the instructions on the `Connect` screen. Note here that the `*.pem*` file in the next steps references the SSH key you set up in the instructions for creating your EC2 instance above. If you chose to use the default settings of the tutorial above then the path to your `*.pem` file will be `~/.aws/default.pem`, otherwise replace this path with your local path based on the location you saved the file.
+The recommended option is to connect through a standalone SSH client (from your local machine). To do so, follow the instructions on the `Connect` screen. Note here that the `*.pem` file in the next steps references the SSH key you set up in the instructions for creating your EC2 instance above. If you chose to use the default settings of the tutorial above then the path to your `*.pem` file will be `~/.aws/default.pem`, otherwise replace this path with your local path based on the location you saved the file.
 
 The first time you connect will need to adjust the permissions on the `*.pem` file SSH key. To do so, open up a terminal and type in the following command:
 ```
-chmod 400 '/path/to/your/pem/file'
+chmod 400 /path/to/your/pem/file
 ```
 If you followed the default settings of the tutorial above, this would be:
 ```
-chmod 400 '~/.aws/default.pem'
+chmod 400 ~/.aws/default.pem
 ``` 
 
 To connect to the instance, use the SSH client of your choice. For Max OS X users, the default SSH client is recommended, and can be accessed by opening the Terminal (Applications > Utilities) and typing the following command:
@@ -126,7 +126,7 @@ ssh -i "~/.aws/default.pem" ubuntu@c2-35-160-231-250.us-west-2.compute.amazonaws
 
 You should now be successfully logged into your remote SSH session:
 
-![AWS Remote Session](./screenshots/ssh01.png)
+![AWS Remote Session](./screenshots/aws-ssh01.png)
 
 ### Stop EC2 instance 
 
