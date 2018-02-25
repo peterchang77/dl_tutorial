@@ -130,7 +130,7 @@ Note the you should replace [ec2-public-dns] with your EC2 instances public DNS.
 ssh -i "~/.aws/default.pem" ubuntu@c2-35-160-231-250.us-west-2.compute.amazonaws.com
 ```
 
-You should now be successfully logged into your remote SSH session:
+You should now be successfully logged into your remote SSH session. Make note of the IP address of your EC2 instance for launching a Jupyter notebook (see below).
 
 ![AWS Remote Session](./screenshots/aws-ssh01.png)
 
@@ -140,11 +140,42 @@ AWS charges a fixed cost per hour of EC2 instance usage, proprated to the second
 
 # Starting Jupyter Notebook 
 
-During the tutorial session, all code written by the participants will be completed using the Jupyter Notebook, an iPython kernel / server that will be running from your own personal AWS instance and accessed through a web-browser. Through this web-based interface one will be able to write, edit and run code in an easy way without needing to use the Linux command line. For more advanced users, this entire Github repository is available for access from the command line at `~/dl_tutorial`. See below for more information.
+During the tutorial session, all code written by the participants will be completed using the Jupyter notebook, an iPython kernel / server that will be running from your own personal AWS instance and accessed through a web-browser. Through this web-based interface one will be able to write, edit and run code in an easy way without needing to use the Linux command line. For more advanced users, this entire Github repository is available for access from the command line at `~/dl_tutorial`. See below for more information.
+
+### Starting Jupyter server
+
+First log into your EC2 instance and make note of the public IP address of your instance in the command prompt (see screenshot above). Alternatively the IP address can be found in the `Instances` menu of the EC2 dashboard:
+
+![AWS IP Address](./screenshots/aws-jupyter00.png)
+
+A preconfigured Jupyter server has been set up on the EC2 instance broadcasting on port 8888. To run this server simply run the following bash script after connecting to your EC2 instance (located in your home folder):
+```
+./start_jupyter.ssh
+```
+
+The Jupyter server will now be active listening of port 8888. Make careful note of the suffix of the provided address including login token:
+
+![AWS Jupyter server](./screenshots/aws-jupyter01.png)
+
+To connect to this Jupyter server, open a web-browser (e.g. Google Chrome), replace the `0.0.0.0` in the provided address with your own public IP address and enter the entire stringinto the address bar. In the above screenshots, the public IP address is `34.215.158.68` therefore the address is:
+
+![AWS Jupyter server](./screenshots/aws-jupyter02.png)
+
+Press `[enter]` to navigate to the web page. You now have access to a web-based iPython kernel though the Jupyter otebook. You also have access the files on your AWS EC2 instance. By default you will login into a copy of this Github code repository pre-configured into your EC2 instance:
+
+![AWS Jupyter launch page](./screenshots/aws-jupyter03.png)
+
+Click on the `Code` folder to open and access the template code provided for you as part of this tutorial. If you are unfamiliar with Jupyter you can launch the `hello_tensorflow.ipynb` notebook to walk through a basic working example by simply clicking on it:
+
+![AWS Jupyter code page](./screenshots/aws-jupyter04.png)
+ 
+You should now have access to our first example Jupyter notebook. Feel free to walk through this template, execute the code (which will be run on your EC2 instance) and edit as you see fit.
+
+![AWS Jupyter hello_tensorflow.ipynb](./screenshots/aws-jupyter05.png)
 
 # Advanced Users
 
-For more advanced users wishing to follow along directly through the EC2 command line instead of the Jupyter Notebook, these are instructions for basic access. In the EC2 instance, all required dependencies have been installed in a separate Conda virtual enivornment named `dl_aws`. To activate simply run:
+For more advanced users wishing to follow along directly through the EC2 command line instead of the Jupyter otebook, these are instructions for basic access. In the EC2 instance, all required dependencies have been installed in a separate Conda virtual enivornment named `dl_aws`. To activate simply run:
 ```
 source activate dw_aws
 ```
