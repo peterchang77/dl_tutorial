@@ -11,12 +11,12 @@ This repository contains the code examples and prerequisite materials for the ha
 The template Amazon Machine Image (AMI) provided as part of this tutorial contains the following preinstalled dependencies:
 
 * Python 3.5
-* NVIDIA drivers v384
+* NVIDIA driver version 384
 * CUDA 9.0 toolbox
 * cudNN 7.0 libraries
 * Tensorflow 1.5
-* Keras 2.4
-* Utility packages: jupyter, pandas, scipy, scikit-learn 
+* Keras 2.1.4
+* Utility packages: jupyter, pandas, scipy, scikit-learn, ipdb
 
 ### Important Note
 
