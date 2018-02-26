@@ -38,13 +38,13 @@ Note that your chosen `AWS account name` cannot contain spaces or non-alphanumer
 
 Use the following link to log into your new AWS account: https://console.aws.amazon.com/console/home
 
+On the following page, enter the email address of your AWS account and click `Next`:
+
 ![AWS Login Screen](./screenshots/aws-login00.png)
 
-Enter the email address of your AWS account here.
+On the following page, enter the password of your AWS account and click `Sign In`:
 
 ![AWS Password Screen](./screenshots/aws-login01.png)
-
-Enter the password of your AWS account here.
 
 After logging in you will arrive at a launch page of various AWS services. We want to specifically manage EC2 instances. To navigate to the EC2 dashboard, click on the `Services` dropdown menu in the top left hand corner of the banner. You should now have a screen that looks like this:
 
@@ -58,7 +58,7 @@ Here you can manage the servers in your AWS cloud, including creating, terminati
 
 ### Request a GPU instance limit increase
 
-By default Amazon does not allow a user to create a new GPU-based instance to prevent accidental incurrence of charges. To request that AWS increase your limit from 0 to 1, click on the `Limits` link on the EC2 console. Scroll down until you see the `p2.xlarge` selection and click on the corresponding link for `Request limit increase`. 
+By default Amazon does not allow a user to create a new GPU-based instance to prevent accidental incurrence of charges. To request that AWS increase your GPU limit from 0 to 1, click on the `Limits` link on the EC2 console. Scroll down until you see the `p2.xlarge` selection and click on the corresponding link for `Request limit increase`. 
 
 ![AWS Limits](./screenshots/aws-limit00.png)
 
@@ -68,15 +68,13 @@ Complete the following request with the settings shown below:
 
 ### Create a new EC2 instance
 
-After logging into the EC2 console (see instructions above) we will now create a new EC2 instance. The EC2 instance will be generated from a preconfigured Amazon Machine Image (AMI). To ensure that this AMI is visible to your AWS account, make sure you are in the `US West (Oregon)` region of service by changing the context in the top right hand corner of the banner as needed:
+After recieving notification of successful limit increase, log into the EC2 console (see instructions above) to begin creating a new EC2 instance. The EC2 instance will be generated from a preconfigured Amazon Machine Image (AMI). To ensure that this AMI is visible to your AWS account, make sure you are in the `US West (Oregon)` region of service by changing the context in the top right hand corner of the banner as needed:
 
 ![AWS Region Selection](./screenshots/aws-ec2new00.png)
 
-Now to begin creating a new instance, click the `Instances` link on the left hand toolbar:
+Now to begin creating a new instance, click the `Instances` link on the left hand toolbar and subsequently click on the blue `Launch Instance` button.
 
 ![AWS Instace Selection](./screenshots/aws-ec2new01.png)
-
-Click on the blue `Launch Instance` button.
 
 For the first step, choose `Community AMIs` on the left hand toolbar and type in `ami-92da53ea` into the `Search community AMIs` query field. Click on the blue `Select` button to choose this template image. This step configures the baseline software for the new EC2 instance. The remaining steps configure the baseline hardware and network protocol settings.
 
@@ -102,7 +100,7 @@ On the top set of links, click on `Review` to see a summary of the EC2 settings.
 
 ![AWS Launch](./screenshots/aws-ec2new07.png)
 
-The final step is to create an SSH key pair to remotely connect to your EC2 instance. To do so type in a key pair name (`default`) and click `Download Key Pair`. It is important to remember the location of the downloaded key. If you lose this key you will be unable to access the EC2 instance. A recommended strategy to store AWS key pairs is to place it in a hidden folder easily accessible from your home folder (`~/.aws`).
+The final step is to create an SSH key pair to remotely connect to your EC2 instance. To do so type in a key pair name (`default`) and click `Download Key Pair`. It is important to remember the name and location of this downloaded key. If you lose this key you will be unable to access the EC2 instance. A recommended strategy to store AWS key pairs is to place it in a hidden folder easily accessible from your home folder (`~/.aws`). After downloading and saving the SSH key, click `Launch Instance` to complete the EC2 creation process.
 
 ![AWS Launch](./screenshots/aws-ec2new08.png)
 
@@ -117,13 +115,11 @@ Note that some OS's may automatically append a `*.txt` to the end of your `*.pem
 chmod 400 ~/.aws/default.pem
 ```
 
-Returning back to the web browser, click `Launch Instance` to complete the EC2 creation process.
-
 # Accessing AWS Instance
 
 ### Launch EC2 instance 
 
-Upon creating your EC2 instance with the instructions, the new EC2 instance will be automatically started. On each subsequent future session, you will have to start (e.g. boot) your EC2 instance before you can connect and use it. To do so, select the `Instances` link on the left hand toolbar, select the instance you want to boot (blue check box to the left of the instance name), select `Actions` > `Instance State` > `Start`. Your EC2 instance will be ready to connect in about 30-60 seconds.
+Upon completing the EC2 instance creation steps described above, the new EC2 instance will be automatically be started. On each subsequent future session, you will have to start (e.g. boot) your EC2 instance before you can connect and use it. To do so, select the `Instances` link on the left hand toolbar, select the instance you want to boot (blue check box to the left of the instance name), select `Actions` > `Instance State` > `Start`. Your EC2 instance will be ready to connect in about 30-60 seconds.
 
 ![AWS Start](./screenshots/aws-start00.png)
 
