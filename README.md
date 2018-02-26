@@ -20,7 +20,7 @@ The template Amazon Machine Image (AMI) provided as part of this tutorial contai
 
 ### Important Note
 
-You should try to complete steps (1) and (2) above several days BEFORE the session as a new AWS user will by default to complete a separate request for GPU-enable instances (requires up to 24 hours for approval).
+You should try to complete steps (1) and (2) above several days BEFORE the session as a new AWS user will by default need to complete a separate request for GPU-enable instances (requires up to 24 hours for approval).
 
 # Create AWS Instance
 
