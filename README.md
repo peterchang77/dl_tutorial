@@ -165,7 +165,7 @@ The Jupyter server will now be active listening of port 8888. Make careful note 
 
 ![AWS Jupyter server](./screenshots/aws-jupyter01.png)
 
-To connect to this Jupyter server, open a web-browser (e.g. Google Chrome), replace the `0.0.0.0` in the provided address with your own public IP address and enter the entire stringinto the address bar. In the above screenshots, the public IP address is `34.215.158.68` therefore the address is:
+To connect to this Jupyter server, open a web-browser (e.g. Google Chrome), replace the `0.0.0.0` in the provided address with your own public IP address and enter the entire string into the address bar. In the above screenshots, the public IP address is `34.215.158.68` therefore the address is:
 
 ![AWS Jupyter server](./screenshots/aws-jupyter02.png)
 
