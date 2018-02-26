@@ -169,7 +169,7 @@ To connect to this Jupyter server, open a web-browser (e.g. Google Chrome), repl
 
 ![AWS Jupyter server](./screenshots/aws-jupyter02.png)
 
-Press `[enter]` to navigate to the web page. You now have access to a web-based iPython kernel though the Jupyter notebook. You also have access the files on your AWS EC2 instance. By default you will login into a copy of this Github code repository pre-configured into your EC2 instance:
+Press `[enter]` to navigate to the web page. You now have access to a web-based iPython kernel though the Jupyter notebook. You also have access to the files on your AWS EC2 instance. By default you will login into a clone of this Github code repository pre-configured into your EC2 instance:
 
 ![AWS Jupyter launch page](./screenshots/aws-jupyter03.png)
 
