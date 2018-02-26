@@ -56,6 +56,12 @@ Click on the `EC2` link under the first `Compute` header within the first column
 
 Here you can manage the servers in your AWS cloud, including creating, terminating, starting and stopping individual EC2 instances. For more general information about EC2 services and the console, see Amazon documentation here: https://aws.amazon.com/ec2/getting-started/ 
 
+### Update AWS EC2 region
+
+The EC2 instance we will create will be generated from a preconfigured Amazon Machine Image (AMI). To ensure that this AMI is visible to your AWS account, make sure you are in the `US West (Oregon)` region of service by changing the context in the top right hand corner of the banner as needed:
+
+![AWS Region Selection](./screenshots/aws-ec2new00.png)
+
 ### Request a GPU instance limit increase
 
 By default Amazon does not allow a user to create a new GPU-based instance to prevent accidental incurrence of charges. To request that AWS increase your GPU limit from 0 to 1, click on the `Limits` link on the EC2 console. Scroll down until you see the `p2.xlarge` selection and click on the corresponding link for `Request limit increase`. 
@@ -68,11 +74,7 @@ Complete the following request with the settings shown below:
 
 ### Create a new EC2 instance
 
-After recieving notification of successful limit increase, log into the EC2 console (see instructions above) to begin creating a new EC2 instance. The EC2 instance will be generated from a preconfigured Amazon Machine Image (AMI). To ensure that this AMI is visible to your AWS account, make sure you are in the `US West (Oregon)` region of service by changing the context in the top right hand corner of the banner as needed:
-
-![AWS Region Selection](./screenshots/aws-ec2new00.png)
-
-Now to begin creating a new instance, click the `Instances` link on the left hand toolbar and subsequently click on the blue `Launch Instance` button.
+After recieving notification of successful limit increase, log into the EC2 console (see instructions above) to begin creating a new EC2 instance. Click the `Instances` link on the left hand toolbar and subsequently click on the blue `Launch Instance` button.
 
 ![AWS Instace Selection](./screenshots/aws-ec2new01.png)
 
