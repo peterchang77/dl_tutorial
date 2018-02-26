@@ -68,7 +68,7 @@ By default Amazon does not allow a user to create a new GPU-based instance to pr
 
 ![AWS Limits](./screenshots/aws-limit00.png)
 
-Complete the following request with the settings shown below:
+Complete the following request with the settings shown below. Ensure that the correct region and instance type are selected:
 
 ![AWS Request](./screenshots/aws-limit01.png)
 
