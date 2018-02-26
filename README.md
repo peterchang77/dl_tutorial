@@ -129,7 +129,7 @@ There are two options to start a remote connection to your EC2 instance. Instruc
 
 ![AWS Connect](./screenshots/aws-ssh00.png)
 
-The recommended option is to connect through a standalone SSH client (from your local machine) of your choice. For Max OS X users, the default SSH client located in the Terminal appliation (Applications > Utilities) is recommended. After opening a terminal session, type in the following command:
+The recommended option is to connect through a standalone SSH client (from your local machine) of your choice. For Mac OS X users, the default SSH client located in the Terminal appliation (Applications > Utilities) is recommended. After opening a terminal session, type in the following command:
 ```
 ssh -i "/path/to/your/pem/file" ubuntu@[ec2-public-dns]
 ``` 
