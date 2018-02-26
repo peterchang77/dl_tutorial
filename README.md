@@ -144,7 +144,7 @@ You should now be successfully logged into your remote SSH session. Make note of
 
 ### Stop EC2 instance 
 
-AWS charges a fixed cost per hour of EC2 instance usage, proprated to the second. To keep your charges low, it is advised to stop (e.g. turn off) your EC2 instance whenever your are finished. To do so, select the `Instances` link on the left hand toolbar, select the instance you want to boot, select `Actions` > `Instance State` > `Stop`.
+AWS charges a fixed cost per hour of EC2 instance usage, prorated to the second. To keep your charges low, it is advised to stop (e.g. turn off) your EC2 instance whenever your are finished. To do so, select the `Instances` link on the left hand toolbar, select the instance you want to boot, select `Actions` > `Instance State` > `Stop`.
 
 # Starting Jupyter Notebook 
 
