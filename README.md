@@ -183,7 +183,7 @@ You should now have access to our first example Jupyter notebook. Feel free to w
 
 # Advanced Users
 
-For more advanced users wishing to follow along directly through the EC2 command line instead of the Jupyter otebook, these are instructions for basic access. In the EC2 instance, all required dependencies have been installed in a separate Conda virtual enivornment named `dl_aws`. To activate simply run:
+For more advanced users wishing to follow along directly through the EC2 command line instead of the Jupyter notebook, these are instructions for basic access. In the EC2 instance, all required dependencies have been installed in a separate Conda virtual enivornment named `dl_aws`. To activate simply run:
 ```
 source activate dw_aws
 ```
