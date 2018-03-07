@@ -5,7 +5,7 @@ import tensorflow as tf
 import net
 
 # --- Set global variables
-iterations = 20 
+iterations = 10 
 batch_size = 16
 learning_rate = 1e-3
 
@@ -36,6 +36,11 @@ with tf.control_dependencies(update_ops):
     global_step = tf.train.get_or_create_global_step()
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
     ops['train'] = optimizer.minimize(-ops['dice'], global_step=global_step)
+
+# --- Save key placeholders/operations for future reference
+tf.add_to_collection("inputs", X)
+tf.add_to_collection("inputs", mode)
+tf.add_to_collection("outputs", pred)
 
 # --- Add data to TensorBoard
 tf.summary.histogram('softmax-scores', pred)

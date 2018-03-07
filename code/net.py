@@ -182,7 +182,7 @@ def loss_dice(y_pred, y_true):
 
     return tf.reduce_mean(num / den)
 
-def update_ema(errors, error, mode, iteration, decay=0.99):
+def update_ema(errors, error, mode, iteration):
     """
     Method to update the errors dict with exponential moving average of 
     classificaiton error.
@@ -195,6 +195,7 @@ def update_ema(errors, error, mode, iteration, decay=0.99):
       (int) iteration : update iteration (to determine EMA vs average)
 
     """
+    decay = 0.99 if mode == 'train' else 0.9
     d = decay if iteration > 10 else 0.5
     errors[mode] = errors[mode] * d + error * (1 - d)
 

@@ -39,6 +39,11 @@ with tf.control_dependencies(update_ops):
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
     ops['train'] = optimizer.minimize(ops['sce'], global_step=global_step)
 
+# --- Save key placeholders/operations for future reference
+tf.add_to_collection("inputs", X)
+tf.add_to_collection("inputs", mode)
+tf.add_to_collection("outputs", pred)
+
 # --- Add data to TensorBoard
 tf.summary.histogram('softmax-scores', pred)
 tf.summary.scalar('sce', ops['sce'])
