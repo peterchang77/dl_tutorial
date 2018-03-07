@@ -49,9 +49,9 @@ def create_summary(root='../data', valid_ratio=0.2):
             'mean': np.mean(dat[dat > 0]),
             'sd': np.std(dat[dat > 0])})
 
-    pickle.dump(summary, open('data.pickle', 'wb'))
+    pickle.dump(summary, open('%s/data.pickle' % root, 'wb'))
 
-def load(mode='train', n=1, root='../data'):
+def load(mode='train', n=1):
     """
     Method to open n random slices of data and corresponding labels 
 
@@ -59,7 +59,6 @@ def load(mode='train', n=1, root='../data'):
 
       (str) mode : 'train' or 'valid'
       (int) n : number of examples to open
-      (str) root : root directory containing data
 
     :return
 
@@ -67,7 +66,7 @@ def load(mode='train', n=1, root='../data'):
       (np.array) lbl : N x I x J x 1 label (dtype = 'uint8')
 
     """
-    global summary
+    global root, summary
 
     indices = np.random.randint(0, len(summary[mode]), n)
     dats = []
@@ -95,9 +94,26 @@ def load(mode='train', n=1, root='../data'):
 
     return dats, lbls
 
-# --- Load summary pickle load into memory if present
-if os.path.exists('data.pickle'):
-    summary = pickle.load(open('data.pickle', 'rb'))
+def set_root(loc=None):
+    """
+    Method to set root directory location of data
+
+    """
+    global root, summary
+
+    if loc is None:
+        loc = '/data/brats/npy' if os.path.exists('/data/brats/npy') else '../data'
+
+    root = loc
+    summary_file = '%s/data.pickle' % root
+    if not os.path.exists(summary_file):
+        create_summary(root=root)
+
+    summary = pickle.load(open(summary_file, 'rb'))
+
+# --- Set root and summary
+global root, summary
+set_root()
 
 if __name__ == '__main__':
 
