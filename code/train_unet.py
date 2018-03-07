@@ -4,9 +4,6 @@ os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3'
 import tensorflow as tf
 import net
 
-import debugging as db
-db.reload_modules([net])
-
 # --- Set global variables
 iterations = 20 
 batch_size = 16

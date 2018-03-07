@@ -5,11 +5,8 @@ import tensorflow as tf, numpy as np
 import net
 import data
 
-import debugging as db
-db.reload_modules([net, data])
-
 # --- Set global variables
-iterations = 20 
+iterations = 100 
 batch_size = 16
 learning_rate = 1e-3
 
@@ -20,7 +17,7 @@ os.makedirs(output_dir, exist_ok=True)
 # --- Initialize data inputs
 ops = {}
 tf.reset_default_graph()
-batch = net.init_batch(batch_size, one_hot=False, root='../data')
+batch = net.init_batch(batch_size, one_hot=False)
 
 # --- Create placeholders into graph
 X = tf.placeholder(tf.float32, shape=[None, 240, 240, 4], name='X')
