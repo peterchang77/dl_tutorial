@@ -92,7 +92,7 @@ def create_classifier(X, training):
 
 def loss_sce(y_pred, y_true):
     """
-    Method to implement simply softmax cross-entropy loss
+    Method to implement simple softmax cross-entropy loss
 
     """
     loss = tf.nn.sparse_softmax_cross_entropy_with_logits(labels=y_true, logits=y_pred)
@@ -251,7 +251,7 @@ def init_batch(batch_size, one_hot=True, root=None):
 
     def generator_valid():
         while True:
-            dat, lbl = data.load(mode='train')
+            dat, lbl = data.load(mode='valid')
             yield (dat[0], lbl[0, ..., 0]) 
 
     batch = {}

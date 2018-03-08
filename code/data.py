@@ -51,7 +51,7 @@ def create_summary(root='../data', valid_ratio=0.2):
 
     pickle.dump(summary, open('%s/data.pickle' % root, 'wb'))
 
-def load(mode='train', n=1):
+def load(mode='train', n=1, sid=None, z=None):
     """
     Method to open n random slices of data and corresponding labels 
 
@@ -67,8 +67,21 @@ def load(mode='train', n=1):
 
     """
     global root, summary
+    random = True
 
-    indices = np.random.randint(0, len(summary[mode]), n)
+    # --- Load specific slice
+    if sid is not None and z is not None:
+        for mode in ['train', 'valid']:
+            indices = [n for n, stats in enumerate(summary[mode]) if stats['studyid'] == sid]
+            if len(indices) > 0:
+                indices = [indices[0]]
+                random = False
+                break
+
+    # --- Load ranom n-slices
+    if random:
+        indices = np.random.randint(0, len(summary[mode]), n)
+
     dats = []
     lbls = []
 
@@ -80,7 +93,9 @@ def load(mode='train', n=1):
         dat = np.memmap(fname, dtype='int16', mode='r')
         dat = dat.reshape(-1, 240, 240, 4)
 
-        z = np.random.randint(dat.shape[0])
+        if random:
+            z = np.random.randint(dat.shape[0]) 
+
         dats.append((dat[z] - stats['mean']) / stats['sd'])
         
         # --- Load corresponding label slice
