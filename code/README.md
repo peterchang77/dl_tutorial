@@ -4,6 +4,18 @@ During the tutorial session, all code written by the participants will be comple
 
 To setup and connect to the Jupyter see instructions on home page: https://github.com/peterchang77/dl_tutorial 
 
+### Outline
+
+The workshop session will be organized into a five-part series. The majority of background information is present in the first lecture. The remaining four notebooks cover implementation of training and inference of a CNN. For best results, consider advancing through the following topics in order:
+
+&nbsp;&nbsp;&nbsp;&nbsp; **01 - Introduction to Data, Tensorflow and Deep Learning** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; **02 - Training a Classifier** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; **03 - Inference with a Classifier** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; **04 - Training a U-Net** <br/>
+&nbsp;&nbsp;&nbsp;&nbsp; **05 - Inference with a U-Net**
+
+Without an active AWS instance it is possible to simply launch the `*.ipynb` files directly here in Github to preview content.
+
 # Data I/O
 
 The `data.py` module abracts a pipeline for loading random slices of preprocessed data. The syntax is as follows:
