@@ -1,3 +1,1 @@
 *.png binary
-./pretrained/unet/* binary
-./pretrained/classifier/* binary
