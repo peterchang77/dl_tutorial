@@ -3,14 +3,35 @@ channels:
   - conda-forge
   - defaults
 dependencies:
-  - ipdb=0.10.1=py35_0
-  - bleach=2.1.2=py35_0
-  - ca-certificates=2017.08.26=h1d4fec5_0
+  - backports=1.0=py35_1
+  - backports.functools_lru_cache=1.5=py35_0
+  - ca-certificates=2018.1.18=0
   - certifi=2018.1.18=py35_0
+  - cycler=0.10.0=py35_0
+  - dbus=1.10.22=0
+  - expat=2.2.5=0
+  - fontconfig=2.12.1=6
+  - freetype=2.7=2
+  - gettext=0.19.8.1=0
+  - glib=2.55.0=0
+  - gst-plugins-base=1.8.0=0
+  - gstreamer=1.8.0=1
+  - ipdb=0.10.1=py35_0
+  - jpeg=9b=2
+  - libffi=3.2.1=3
+  - libpng=1.6.28=2
+  - libxcb=1.12=1
+  - matplotlib=2.1.1=py35_0
+  - openssl=1.0.2n=0
+  - pcre=8.39=0
+  - pyparsing=2.2.0=py35_0
+  - pyqt=5.6.0=py35_4
+  - qt=5.6.2=6
+  - xorg-libxau=1.0.8=3
+  - xorg-libxdmcp=1.1.2=3
+  - bleach=2.1.2=py35_0
   - decorator=4.1.2=py35_0
   - entrypoints=0.2.3=py35h48174a2_2
-  - fontconfig=2.12.4=h88586e7_1
-  - freetype=2.8=hab7d2ae_1
   - gmp=6.1.2=h6c8ec71_1
   - html5lib=1.0.1=py35h2f9c1c0_0
   - icu=58.2=h9c2bf20_1
@@ -27,7 +48,6 @@ dependencies:
   - libgcc-ng=7.2.0=h7cc24e2_2
   - libgfortran=3.0.0=1
   - libiconv=1.15=h63c8f33_5
-  - libpng=1.6.34=hb9fc6fc_0
   - libsodium=1.0.15=hf101ebd_0
   - libstdcxx-ng=7.2.0=h7a57d05_2
   - libxml2=2.9.4=0
@@ -38,7 +58,6 @@ dependencies:
   - nbformat=4.4.0=py35h12e6e07_0
   - notebook=5.4.0=py35_0
   - numpy=1.13.1=py35_0
-  - openssl=1.0.2n=hb7f436b_0
   - pandas=0.20.3=py35_0
   - pandoc=1.19.2.1=hea2e7c5_1
   - pandocfilters=1.4.2=py35h1565a15_1
@@ -49,12 +68,10 @@ dependencies:
   - prompt_toolkit=1.0.15=py35_0
   - ptyprocess=0.5.2=py35_0
   - pygments=2.2.0=py35_0
-  - pyqt=4.11.4=py35_4
   - python=3.5.0=1
   - python-dateutil=2.6.1=py35_0
   - pytz=2017.2=py35_0
   - pyzmq=16.0.3=py35ha889422_0
-  - qt=4.8.7=3
   - qtconsole=4.3.1=py35h4626a06_0
   - readline=6.2=2
   - scikit-learn=0.19.0=np113py35_0
@@ -81,6 +98,7 @@ dependencies:
     - absl-py==0.1.10
     - keras==2.1.4
     - markdown==2.6.11
+    - opencv-python==3.4.0.12
     - protobuf==3.5.1
     - pyyaml==3.12
     - tensorflow-gpu==1.5.0
