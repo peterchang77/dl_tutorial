@@ -11,12 +11,12 @@ This repository contains the code examples and prerequisite materials for the ha
 The template Amazon Machine Image (AMI) provided as part of this tutorial contains the following preinstalled dependencies:
 
 * Python 3.5
-* NVIDIA driver version 384
+* NVIDIA driver version 390 
 * CUDA 9.0 toolbox
 * cudNN 7.0 libraries
 * Tensorflow 1.5
 * Keras 2.1.4
-* Utility packages: jupyter, pandas, scipy, scikit-learn, ipdb
+* Utility packages: jupyter, pandas, scipy, scikit-learn, cv2, matplotlib, ipdb
 
 ### Important Note
 
@@ -78,7 +78,7 @@ After recieving notification of successful limit increase, log into the EC2 cons
 
 ![AWS Instace Selection](./screenshots/aws-ec2new01.png)
 
-For the first step, choose `Community AMIs` on the left hand toolbar and type in `ami-92da53ea` into the `Search community AMIs` query field. Click on the blue `Select` button to choose this template image. This step configures the baseline software for the new EC2 instance. The remaining steps configure the baseline hardware and network protocol settings.
+For the first step, choose `Community AMIs` on the left hand toolbar and type in `ami-25dc4d5d` into the `Search community AMIs` query field. Click on the blue `Select` button to choose this template image. This step configures the baseline software for the new EC2 instance. The remaining steps configure the baseline hardware and network protocol settings.
 
 ![AWS Instance Type Selection](./screenshots/aws-ec2new02.png)
 
@@ -140,7 +140,7 @@ Note the you should replace [ec2-public-dns] with your EC2 instances public DNS.
 ssh -i "~/.aws/default.pem" ubuntu@c2-35-160-231-250.us-west-2.compute.amazonaws.com
 ```
 
-You should now be successfully logged into your remote SSH session. Make note of the IP address of your EC2 instance for launching a Jupyter notebook (see below).
+You should now be successfully logged into your remote SSH session. 
 
 ![AWS Remote Session](./screenshots/aws-ssh01.png)
 
@@ -154,16 +154,22 @@ During the tutorial session, all code written by the participants will be comple
 
 ### Starting Jupyter server
 
-First log into your EC2 instance and make note of the public IP address of your instance in the command prompt (see screenshot above). Alternatively the IP address can be found in the `Instances` menu of the EC2 dashboard:
+First log into your EC2 instance and make note of the public IP address of your instance which can be found in the `Instances` menu of the EC2 dashboard:
 
 ![AWS IP Address](./screenshots/aws-jupyter00.png)
 
-A preconfigured Jupyter server has been set up on the EC2 instance broadcasting on port 8888. To run this server simply run the following bash script after connecting to your EC2 instance (located in your home folder):
+A preconfigured Jupyter server has been set up on the EC2 instance broadcasting on port 8888. To launch this server simply run the following bash script after connecting to your EC2 instance (located in your home folder):
 ```
-./start_jupyter.ssh
+./start_jupyter.sh
 ```
 
-The Jupyter server will now be active listening of port 8888. Make careful note of the suffix of the provided address including login token:
+This bash script will:
+
+* update to the latest version of this repository from Github
+* activate the `dl_aws` conda environment
+* launch a Jupyter server listening of port 8888
+
+Make careful note of the suffix of the provided address including login token:
 
 ![AWS Jupyter server](./screenshots/aws-jupyter01.png)
 
@@ -175,7 +181,7 @@ Press `[enter]` to navigate to the web page. You now have access to a web-based 
 
 ![AWS Jupyter launch page](./screenshots/aws-jupyter03.png)
 
-Click on the `Code` folder to open and access the template code provided for you as part of this tutorial. If you are unfamiliar with Jupyter you can launch the `hello_tensorflow.ipynb` notebook to walk through a basic working example by simply clicking on it:
+Click on the `Code` folder to open and access the series of Jupyter notebook lectures (`*.ipnyb`) and template code provided for you as part of this tutorial. If you are unfamiliar with Jupyter you can launch the `00 - Hello Tensorflow.ipynb` notebook to walk through a basic working example by simply clicking on it:
 
 ![AWS Jupyter code page](./screenshots/aws-jupyter04.png)
  
@@ -187,7 +193,7 @@ You should now have access to our first example Jupyter notebook. Feel free to w
 
 For more advanced users wishing to follow along directly through the EC2 command line instead of the Jupyter notebook, these are instructions for basic access. In the EC2 instance, all required dependencies have been installed in a separate Conda virtual enivornment named `dl_aws`. To activate simply run:
 ```
-source activate dw_aws
+source activate dl_aws
 ```
 
 From here simply access code and materials from this cloned Github repository at `~/dl_tutorial`. You may use your favorite editor. Note that `vim` has been preconfigured with syntax highlighting, Vundle and several useful plugins for Python development (see `~/.vimrc` for further details). Code may be executed with either `python` or the `ipython` kernel.
