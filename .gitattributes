@@ -1,1 +1,6 @@
 *.png binary
+*.ckpy* binary
+*.index binary
+*.meta binary
+*.data-00000-of-00001 binary
+checkpoint binary
