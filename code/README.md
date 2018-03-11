@@ -22,28 +22,37 @@ The `data.py` module abracts a pipeline for loading random slices of preprocesse
 ```
 import data
 
-dat, lbl = data.load(mode='train', n=16, root='../data')
+dat, lbl = data.load(mode='train', n=16)
 
 ```
 
 From the corresponding docstring within the method:
 ```
-def load(mode='train', n=1, root='../data'):
+def load(mode='train', n=1, sid=None, z=None, return_mask=False):
     """
-    Method to open n random slices of data and corresponding labels 
+    Method to open n random slices of data and corresponding labels. Note that this
+    method will load data in a stratified manner such that approximately 50% of all 
+    returned data will contain tumor.
 
     :params
 
       (str) mode : 'train' or 'valid'
       (int) n : number of examples to open
-      (str) root : root directory containing data
+      (str) sid : if provided, will load specific study ID
+      (int) z : if provided, will load specifc slice
+      (bool) return_mask : if True, will also return mask containing brain parenchyma
 
     :return
 
       (np.array) dat : N x I x J x 4 input (dtype = 'float32')
       (np.array) lbl : N x I x J x 1 label (dtype = 'uint8')
+      (np.array) msk : N x I x J x 1 lmask (dtype = 'float32'), (optional)
 
     """
 ```
 
-Not here that the root for testing purposes can point to dl_tutorial/data for testing purposes. During the workshop session, the full dataset will be mapped in the EC2 instances in `/data/brats/npy`.
+### Data source directory
+
+By default, upon import, the `data.py` module will search for a directory on your local machine located at `/data/brats/npy`; this is the location of the full dataset if you clone the AWS AMI provided as part of this tutorial and are following along currently on an EC2 instance. If found, this directory will be set as the root for loading data. If absent, then the toy dataset present as part of this repository located at `../data` will be used.
+
+Note that the data source directory can be manually set any time after module import with the `data.set_root()` method.
