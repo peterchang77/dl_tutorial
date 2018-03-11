@@ -19,15 +19,15 @@ dat[..., 3] = T1 postcontrast
 Output labels from the CNN consist of matrices of size 1 x 256 x 256 x 1. At each voxel location, there are one of 5 possible labels:
 ```
 0 = background (no tumor)
-1 = edema
-2 = non-enhancing tumor 
+1 = non-enhancing tumor 
+2 = edema
 3 = necrosis
 4 = enhancing tumor
 ```
 
 ![BRATS Input](./label.png)
 
-Note that in the above, yellow == edema, pink == non-enhancing tumor, green == necrosis, blue == enhancing tumor.
+Note that in the above, yellow == non-enhancing tumor, pink == edema, green == necrosis, blue == enhancing tumor.
 
 ### Data format
 
@@ -45,5 +45,3 @@ import data
 dat, lbl = data.load(mode='train', n=16)
 
 ```
-See https://github.com/peterchang77/dl_tutorial/code for more information.
-

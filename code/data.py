@@ -51,9 +51,11 @@ def create_summary(root='../data', valid_ratio=0.2):
 
     pickle.dump(summary, open('%s/data.pickle' % root, 'wb'))
 
-def load(mode='train', n=1, sid=None, z=None, return_mask=False, stratified=True):
+def load(mode='train', n=1, sid=None, z=None, return_mask=False):
     """
-    Method to open n random slices of data and corresponding labels 
+    Method to open n random slices of data and corresponding labels. Note that this
+    method will load data in a stratified manner such that approximately 50% of all 
+    returned data will contain tumor.
 
     :params
 
@@ -62,7 +64,6 @@ def load(mode='train', n=1, sid=None, z=None, return_mask=False, stratified=True
       (str) sid : if provided, will load specific study ID
       (int) z : if provided, will load specifc slice
       (bool) return_mask : if True, will also return mask containing brain parenchyma
-      (bool) stratified : if True, will startify sampling 50/50% tumor/no tumor
 
     :return
 
@@ -105,14 +106,10 @@ def load(mode='train', n=1, sid=None, z=None, return_mask=False, stratified=True
 
         # --- Determine slice
         if random:
-            if stratified:
-                reduce_sum = np.sum(lbl, axis=(1,2,3))
-                z = np.nonzero(reduce_sum > 0)[0] if np.random.rand() > 0.5 else np.nonzero(reduce_sum == 0)[0]
-                np.random.shuffle(z)
-                z = z[0]
-
-            else:
-                z = np.random.randint(dat.shape[0]) 
+            reduce_sum = np.sum(lbl, axis=(1,2,3))
+            z = np.nonzero(reduce_sum > 0)[0] if np.random.rand() > 0.5 else np.nonzero(reduce_sum == 0)[0]
+            np.random.shuffle(z)
+            z = z[0]
 
         msks.append((dat[z, ..., :1] > 0))
         dats.append((dat[z] - stats['mean']) / stats['sd'])

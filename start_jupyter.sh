@@ -6,5 +6,6 @@
 # ==========================================================
 
 cd ~/dl_tutorial
+git pull origin master
 source activate dl_aws 
 jupyter notebook --no-browser
