@@ -171,21 +171,41 @@ def loss_dice(y_pred, y_true):
 
     :return
 
-        (float) dice score 
+        (dict) scores : {
+          'final': final weighted Dice score,
+          0: score for class 1,
+          1: score for class 2, ...
+        }
 
     """
-    y_pred = tf.contrib.layers.flatten(y_pred) 
-    y_true = tf.contrib.layers.flatten(y_true) 
+    # --- Loop over the channels
+    channels = y_pred.shape.as_list()[-1]
+    losses = {}
+    for ch in range(channels):
+        num = 2 * tf.reduce_sum(y_pred[..., ch] * y_true[..., ch])
+        den = tf.reduce_sum(y_pred[..., ch]) + tf.reduce_sum(y_true[..., ch])
+        losses[ch] = (num + 1e-7) / (den + 1e-7) 
 
-    num = 2 * tf.reduce_sum(y_pred * y_true, axis=1) + 1e-7
-    den = tf.reduce_sum(y_pred, axis=1) + tf.reduce_sum(y_true, axis=1) + 1e-7
+    # --- Calculate weighted dice score loss function
+    weight = lambda ch : (tf.reduce_sum(y_true[..., ch]) + 1e-7) / (tf.reduce_sum(y_true) + 1e-7)
+    losses['dice'] = tf.reduce_sum([losses[ch] * weight(ch) for ch in range(channels)])
 
-    return tf.reduce_mean(num / den)
+    return losses 
 
-def update_ema(errors, error, mode, iteration):
+def init_metrics(losses):
     """
-    Method to update the errors dict with exponential moving average of 
-    classificaiton error.
+    Method to initialize a metrics dictionary based on keys in losses
+
+    """
+    metrics = {'train': {}, 'valid': {}}
+    for mode, d in metrics.items():
+        metrics[mode] = dict([(k, 0) for k in losses])
+
+    return metrics
+
+def update_ema(metrics, metric, mode, iteration):
+    """
+    Method to update the metrics dict with exponential moving average of metric.
 
     :params
 
@@ -197,18 +217,35 @@ def update_ema(errors, error, mode, iteration):
     """
     decay = 0.99 if mode == 'train' else 0.9
     d = decay if iteration > 10 else 0.5
-    errors[mode] = errors[mode] * d + error * (1 - d)
 
-    return errors
+    for key, value in metric.items():
+        metrics[mode][key] = metrics[mode][key] * d + value * (1 - d)
 
-def print_status(errors, step, error_name='Dice'):
+    return metrics 
+
+def print_status(metrics, step, metric_names=[]):
     """
-    Method to print iteration and errors for train/valid
+    Method to print iteration and metrics for train/valid
+
+    :params
+
+      (dict) metrics
+      (int) step
+      (list) metric_names : list of keys within metrics to print 
 
     """
-    print('\r', end='')
-    print('%07i | %s (train) : %0.5f | %s (valid): %0.5f' % 
-        (step, error_name, errors['train'], error_name, errors['valid']), end='')
+    printf = {'train': '', 'valid': ''}
+    values = {'train': [], 'valid': []} 
+
+    for name in metric_names:
+        for mode in ['train', 'valid']:
+            printf[mode] += '- %s : %s ' % (name, '%0.4f')
+            values[mode].append(metrics[mode][name])
+
+    printf = '%s | TRAIN %s | VALID %s' % ('%07i', printf['train'], printf['valid'])
+    values = [step] + values['train'] + values['valid']
+
+    print(printf % tuple(values), end='\r')
 
 def init_session(sess, output_dir):
     """
@@ -246,26 +283,26 @@ def init_batch(batch_size, one_hot=True, root=None):
 
     def generator_train():
         while True:
-            dat, lbl = data.load(mode='train')
-            yield (dat[0], lbl[0, ..., 0]) 
+            dat, lbl, msk = data.load(mode='train', return_mask=True)
+            yield (dat[0], lbl[0, ..., 0], msk[0]) 
 
     def generator_valid():
         while True:
-            dat, lbl = data.load(mode='valid')
-            yield (dat[0], lbl[0, ..., 0]) 
+            dat, lbl, msk = data.load(mode='valid', return_mask=True)
+            yield (dat[0], lbl[0, ..., 0], msk[0]) 
 
     batch = {}
     for mode, generator in zip(['train', 'valid'], [generator_train, generator_valid]): 
 
         ds = tf.data.Dataset.from_generator(generator, 
-            output_types=(tf.float32, tf.uint8),
-            output_shapes=([240, 240, 4], [240, 240]))
+            output_types=(tf.float32, tf.uint8, tf.float32),
+            output_shapes=([240, 240, 4], [240, 240], [240, 240, 1]))
         ds = ds.batch(batch_size)
         ds = ds.prefetch(batch_size * 5)
         its = ds.make_one_shot_iterator()
         it = its.get_next()
-        y = tf.one_hot(it[1] + 1, depth=5) if one_hot else it[1]
+        y = tf.one_hot(it[1], depth=5) if one_hot else it[1]
 
-        batch[mode] = {'X': it[0], 'y': y}
+        batch[mode] = {'X': it[0], 'y': y, 'mask': it[2]}
 
     return batch

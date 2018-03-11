@@ -51,7 +51,7 @@ def create_summary(root='../data', valid_ratio=0.2):
 
     pickle.dump(summary, open('%s/data.pickle' % root, 'wb'))
 
-def load(mode='train', n=1, sid=None, z=None):
+def load(mode='train', n=1, sid=None, z=None, return_mask=False, stratified=True):
     """
     Method to open n random slices of data and corresponding labels 
 
@@ -59,11 +59,16 @@ def load(mode='train', n=1, sid=None, z=None):
 
       (str) mode : 'train' or 'valid'
       (int) n : number of examples to open
+      (str) sid : if provided, will load specific study ID
+      (int) z : if provided, will load specifc slice
+      (bool) return_mask : if True, will also return mask containing brain parenchyma
+      (bool) stratified : if True, will startify sampling 50/50% tumor/no tumor
 
     :return
 
       (np.array) dat : N x I x J x 4 input (dtype = 'float32')
       (np.array) lbl : N x I x J x 1 label (dtype = 'uint8')
+      (np.array) msk : N x I x J x 1 lmask (dtype = 'float32'), (optional)
 
     """
     global root, summary
@@ -84,30 +89,44 @@ def load(mode='train', n=1, sid=None, z=None):
 
     dats = []
     lbls = []
+    msks = []
 
     for ind in indices:
         stats = summary[mode][ind]
         
-        # --- Load random data slice
+        # --- Load data and labels 
         fname = '%s/%s/dat.npy' % (root, stats['studyid'])
         dat = np.memmap(fname, dtype='int16', mode='r')
         dat = dat.reshape(-1, 240, 240, 4)
 
-        if random:
-            z = np.random.randint(dat.shape[0]) 
-
-        dats.append((dat[z] - stats['mean']) / stats['sd'])
-        
-        # --- Load corresponding label slice
         fname = '%s/%s/lbl.npy' % (root, stats['studyid'])
         lbl = np.memmap(fname, dtype='uint8', mode='r')
         lbl = lbl.reshape(-1, 240, 240, 1)
+
+        # --- Determine slice
+        if random:
+            if stratified:
+                reduce_sum = np.sum(lbl, axis=(1,2,3))
+                z = np.nonzero(reduce_sum > 0)[0] if np.random.rand() > 0.5 else np.nonzero(reduce_sum == 0)[0]
+                np.random.shuffle(z)
+                z = z[0]
+
+            else:
+                z = np.random.randint(dat.shape[0]) 
+
+        msks.append((dat[z, ..., :1] > 0))
+        dats.append((dat[z] - stats['mean']) / stats['sd'])
         lbls.append(lbl[z])
 
     dats = np.stack(dats, axis=0)
     lbls = np.stack(lbls, axis=0)
+    msks = np.stack(msks, axis=0).astype('float32')
 
-    return dats, lbls
+    if return_mask:
+        return dats, lbls, msks
+
+    else:
+        return dats, lbls
 
 def set_root(loc=None):
     """
