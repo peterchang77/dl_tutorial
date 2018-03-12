@@ -78,7 +78,7 @@ After recieving notification of successful limit increase, log into the EC2 cons
 
 ![AWS Instace Selection](./screenshots/aws-ec2new01.png)
 
-For the first step, choose `Community AMIs` on the left hand toolbar and type in `ami-25dc4d5d` into the `Search community AMIs` query field. Click on the blue `Select` button to choose this template image. This step configures the baseline software for the new EC2 instance. The remaining steps configure the baseline hardware and network protocol settings.
+For the first step, choose `Community AMIs` on the left hand toolbar and type in `ami-c61d8cbe` into the `Search community AMIs` query field. Click on the blue `Select` button to choose this template image. This step configures the baseline software for the new EC2 instance. The remaining steps configure the baseline hardware and network protocol settings.
 
 ![AWS Instance Type Selection](./screenshots/aws-ec2new02.png)
 
@@ -154,10 +154,6 @@ During the tutorial session, all code written by the participants will be comple
 
 ### Starting Jupyter server
 
-First log into your EC2 instance and make note of the public IP address of your instance which can be found in the `Instances` menu of the EC2 dashboard:
-
-![AWS IP Address](./screenshots/aws-jupyter00.png)
-
 A preconfigured Jupyter server has been set up on the EC2 instance broadcasting on port 8888. To launch this server simply run the following bash script after connecting to your EC2 instance (located in your home folder):
 ```
 ./start_jupyter.sh
@@ -169,11 +165,13 @@ This bash script will:
 * activate the `dl_aws` conda environment
 * launch a Jupyter server listening of port 8888
 
-Make careful note of the suffix of the provided address including login token:
+Upon execution, two URLs are shown: 
 
 ![AWS Jupyter server](./screenshots/aws-jupyter01.png)
 
-To connect to this Jupyter server, open a web-browser (e.g. Google Chrome), replace the `0.0.0.0` in the provided address with your own public IP address and enter the entire string into the address bar. In the above screenshots, the public IP address is `34.215.158.68` therefore the address is:
+The first URL is prefixed with `0.0.0.0`, the default template provided by the Jupyter notebook server, and the second URL is created by an auto-IP detection script, filling the address with your public IP address. If this does not appear, see **Finding your public IP address** section below to locate this manually. 
+
+To connect to this Jupyter server, open a web-browser (e.g. Google Chrome) enter the URL into the address bar. 
 
 ![AWS Jupyter server](./screenshots/aws-jupyter02.png)
 
@@ -188,6 +186,12 @@ Click on the `Code` folder to open and access the series of Jupyter notebook lec
 You should now have access to our first example Jupyter notebook. Feel free to walk through this template, execute the code (which will be run on your EC2 instance) and edit as you see fit.
 
 ![AWS Jupyter hello_tensorflow.ipynb](./screenshots/aws-jupyter05.png)
+
+### Finding your public IP address
+
+If the auto-IP detection feature does not work on your EC2 instance, you will need to manually find your IP address in the AWS dashboard. The public IP address of your instance can be found in the `Instances` menu of the EC2 dashboard:
+
+![AWS IP Address](./screenshots/aws-jupyter00.png)
 
 # Advanced Users
 
