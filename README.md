@@ -10,7 +10,7 @@ If you wish to follow along on Amazon, proceed with the instructions here to cre
 2. How to access the  AWS EC2 instance.  
 3. How to run Jupyter notebook.
 
-**NOTE:** You should try to complete steps (1) and (2) above several days BEFORE the session as a new AWS user will by default need to complete a separate request for GPU-enable instances (requires up to 24 hours for approval).
+**IMPORTANT NOTE:** You should try to complete steps (1) and (2) above *before* the session as a new AWS user will by default need to complete a separate request for GPU-enable instances (requires up to 24 hours for approval).
 
 ### Template AMI
 
