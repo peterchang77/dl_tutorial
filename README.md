@@ -1,10 +1,16 @@
 # Overview
 
-This repository contains the code examples and prerequisite materials for the hands-on Deep Learning Tutorial at the ISMRM Machine Learning Workshop 2018, as well as instructions for creating a new AWS EC2 GPU instance pre-configured with all the required Python dependencies, CUDA/cudNN libraries and training data for following along the course.
+This repository contains the code examples and prerequisite materials for the hands-on Deep Learning Tutorial at the ISMRM Machine Learning Workshop 2018, as well as instructions for creating a new AWS EC2 GPU instance pre-configured with all the required Python dependencies, CUDA/cuDNN libraries and training data for following along the course. 
+
+If you wish to follow along on Amazon, proceed with the instructions here to create your own personal EC2 instance which you will use to train neural networks. The cost for a minimum single GPU `p2.xlarge` instance is approximately $0.90/hour. If you wish to follow along locally, feel free to clone this repository onto your own computer. A toy dataset is provided in `dl_tutorial/data` so that the code provided here can be executed. Alternatively, the Jupyter notebooks (`*.ipynb`) can be browsed directly on Github and can be found in the `dl_tutorial/code` directory of this repository. 
+
+### Steps
 
 1. How to create a new AWS EC2 instance.
 2. How to access the  AWS EC2 instance.  
 3. How to run Jupyter notebook.
+
+**NOTE:** You should try to complete steps (1) and (2) above several days BEFORE the session as a new AWS user will by default need to complete a separate request for GPU-enable instances (requires up to 24 hours for approval).
 
 ### Template AMI
 
@@ -17,10 +23,6 @@ The template Amazon Machine Image (AMI) provided as part of this tutorial contai
 * Tensorflow 1.5
 * Keras 2.1.4
 * Utility packages: jupyter, pandas, scipy, scikit-learn, cv2, matplotlib, ipdb
-
-### Important Note
-
-You should try to complete steps (1) and (2) above several days BEFORE the session as a new AWS user will by default need to complete a separate request for GPU-enable instances (requires up to 24 hours for approval).
 
 # Create AWS Instance
 
