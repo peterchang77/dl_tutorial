@@ -33,7 +33,7 @@ def imshow(dat, lbl=None, index=0, radius=1, vm=None, title=None):
         im = imoverlay(im, np.stack(masks, axis=2)) 
 
     # --- Display image
-    cmap = None if im.ndim == 3 or im.dtype == 'uint8' else plt.cm.gist_gray
+    cmap = plt.cm.colors if im.ndim == 3 or im.dtype == 'uint8' else plt.cm.gist_gray
     if vm is not None:
         plt.imshow(im, cmap=cmap, vmin=vm[0], vmax=vm[1])
     else:
