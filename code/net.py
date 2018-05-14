@@ -246,7 +246,7 @@ def print_status(metrics, step, metric_names=[]):
     values = [step] + values['train'] + values['valid']
 
     print(printf % tuple(values), end='\r')
-    sys.stout.flush()
+    sys.stdout.flush()
 
 def init_session(sess, output_dir):
     """
