@@ -133,7 +133,15 @@ def set_root(loc=None):
     global root, summary
 
     if loc is None:
-        loc = '/data/brats/npy' if os.path.exists('/data/brats/npy') else '../data'
+        paths = [
+            '/data/brats/npy',      # AWS
+            '../data',              # local repo
+            'brats/npy'             # Google CoLaboratory
+        ]
+        for path in paths:
+            if os.path.exists(path):
+                loc = path
+                break
 
     root = loc
     summary_file = '%s/data.pickle' % root
