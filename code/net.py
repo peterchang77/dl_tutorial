@@ -223,7 +223,7 @@ def update_ema(metrics, metric, mode, iteration):
 
     return metrics 
 
-def print_status(metrics, step, metric_names=[]):
+def print_status(metrics, step, metric_names=[], end='\r'):
     """
     Method to print iteration and metrics for train/valid
 
@@ -245,7 +245,7 @@ def print_status(metrics, step, metric_names=[]):
     printf = '%s | TRAIN %s | VALID %s' % ('%07i', printf['train'], printf['valid'])
     values = [step] + values['train'] + values['valid']
 
-    print(printf % tuple(values), end='\r')
+    print(printf % tuple(values), end=end)
     sys.stdout.flush()
 
 def init_session(sess, output_dir):
