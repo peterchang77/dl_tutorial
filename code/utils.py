@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np, cv2
 
-def imshow(dat, lbl=None, index=0, radius=1, vm=None, title=None):
+def imshow(dat, lbl=None, index=0, radius=1, vm=None, title=None, figsize=(7, 7)):
     """
     Method to display dat with lbl overlay if provided.
 
@@ -34,6 +34,8 @@ def imshow(dat, lbl=None, index=0, radius=1, vm=None, title=None):
 
     # --- Display image
     cmap = None if im.ndim == 3 or im.dtype == 'uint8' else plt.cm.gist_gray
+    plt.figure(figsize=figsize)
+
     if vm is not None:
         plt.imshow(im, cmap=cmap, vmin=vm[0], vmax=vm[1])
     else:
